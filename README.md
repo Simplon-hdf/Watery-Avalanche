@@ -6,4 +6,4 @@ Cloner le projet sur votre PC et lancez la commande ` composer install ` via un 
 
 ### Lancer le serveur Symfony
 
-Faites la commande ` symfony serve ` pour lancer le serveur Symfony et rendez-vous sur ` https://127.0.0.1:8000/api ` pour vérifier la bonne installation sur projet
+Faites la commande `symfony serve --no-tls` pour lancer le serveur Symfony et rendez-vous sur ` https://127.0.0.1:8000/api ` pour vérifier la bonne installation sur projet
