@@ -20,7 +20,9 @@
         "symfony/dotenv": "6.1.*",
         "symfony/expression-language": "6.1.*",
         "symfony/flex": "^2",
+        "symfony/form": "6.1.*",
         "symfony/framework-bundle": "6.1.*",
+        "symfony/mailer": "6.1.*",
         "symfony/property-access": "6.1.*",
         "symfony/property-info": "6.1.*",
         "symfony/proxy-manager-bridge": "6.1.*",
@@ -29,7 +31,8 @@
         "symfony/serializer": "6.1.*",
         "symfony/twig-bundle": "6.1.*",
         "symfony/validator": "6.1.*",
-        "symfony/yaml": "6.1.*"
+        "symfony/yaml": "6.1.*",
+        "symfonycasts/verify-email-bundle": "^1.12"
     },
     "config": {
         "allow-plugins": {
@@ -84,6 +87,8 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.46"
+        "symfony/maker-bundle": "^1.46",
+        "symfony/stopwatch": "6.1.*",
+        "symfony/web-profiler-bundle": "6.1.*"
     }
 }
