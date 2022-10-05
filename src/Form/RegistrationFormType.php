@@ -18,6 +18,11 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
+            ->add('name')
+            ->add('surname')
+            ->add('phone')
+            ->add('date_of_birth')
+
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -26,10 +31,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('name')
-            ->add('surname')
-            ->add('phone')
-            ->add('date_of_birth')
+
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
