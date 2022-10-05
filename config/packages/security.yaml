@@ -9,8 +9,6 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
-        # used to reload user from session & other features (e.g. switch_user)
-        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -19,6 +17,9 @@ security:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\LoginAuthenticator
+            pattern : ^/
+            user_checker : App\Security\UserChecker
+
             logout:
                 path: app_logout
                 # where to redirect after logout
