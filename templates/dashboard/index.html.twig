@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block body %}
+
+	{% include "./header.html.twig" %}
+
+	<div class="container-dashboard">
+
+		<div class="left-side-dashboard">
+			<h1>Check your bank accounts</h1>
+			<a>Check the massive amount of coins you own in our safe:</a><br>
+			<a href="{{ path('app_login') }}">View accounts</a>
+		</div>
+
+		<div class="right-side-dashboard">
+			<h1>Create a new bank account</h1>
+			<a>Create a new storage unit for your hard earned coins:</a>
+			<br>
+			<a href="{{ path('app_login') }}">View accounts</a>
+		</div>
+
+	</div>
+
+{% endblock %}
