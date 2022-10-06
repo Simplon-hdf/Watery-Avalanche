@@ -2,28 +2,46 @@
 
 namespace App\Form;
 
+use App\Entity\Account;
 use App\Entity\Transaction;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 class TransactionType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options,): void
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('reason')
             ->add('amount')
             ->add('deposit_identity')
             ->add('type')
-            // ->add('id_sender', EntityType::class, array(
-            //     'class' => 'AppBundle:Account',
-            //     'query_builder' => function (EntityRepository $er) {
-            //         return $er->createQueryBuilder('u')
-            //           ->orderBy('u.username', 'ASC');
-            //     },
-            //     'choice_label' => 'username',
-            // ->add('id_receiver')
+            ->add('id_sender', EntityType::class, array(
+                'class' => Account::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                    ->andWhere('u.id_user = :val')
+                    ->setParameter('val', $this->security->getUser())
+                    ->orderBy('u.iban', 'ASC');
+                },'choice_label' => 'iban',))
+            ->add('id_receiver', EntityType::class, array(
+                'class' => Account::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                    ->andWhere('u.id_user = :val')
+                    ->setParameter('val', $this->security->getUser())
+                    ->orderBy('u.iban', 'ASC');
+                },'choice_label' => 'iban',))
         ;
     }
 

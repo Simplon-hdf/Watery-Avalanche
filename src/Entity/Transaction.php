@@ -6,6 +6,9 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\TransactionRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Get;
+use App\Controller\TransactionController;
 
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]
 #[ApiResource]

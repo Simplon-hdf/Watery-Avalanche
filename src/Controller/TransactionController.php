@@ -30,12 +30,9 @@ class TransactionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $account = new Account();
-            
             $transaction->setDate(new \DateTime('now'));
             $transaction->setTransactionState(false);
-            $transaction->setIdSender($account);
-            $transaction->setIdReceiver($account);
+            
 
             $transactionRepository->save($transaction, true);
 
