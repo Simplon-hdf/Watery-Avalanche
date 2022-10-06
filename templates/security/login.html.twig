@@ -3,6 +3,17 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+
+
+{% include "./header.html.twig" %}
+
+<div class="container">
+
+<div class="left-side">
+<img src="{{ asset('./build/img/join.png')}}" alt="logo">
+</div>
+
+<div class="right-side">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -14,14 +25,17 @@
         </div>
     {% endif %}
 
-    {% include "./header.html.twig" %}
+
 
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
+    <div class="input-style">
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    </div>
+    <div class="input-style">
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    </div>
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
@@ -41,4 +55,6 @@
         Sign in
     </button>
 </form>
+</div>
+</div>
 {% endblock %}
