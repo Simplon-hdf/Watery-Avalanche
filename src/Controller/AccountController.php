@@ -17,9 +17,12 @@ class AccountController extends AbstractController
     public function index(AccountRepository $accountRepository): Response
     {
         return $this->render('account/index.html.twig', [
-            'accounts' => $accountRepository->findAll(),
+            'accounts' => $accountRepository->findByUserId($this->getUser()),
         ]);
     }
+
+
+
 
     #[Route('/new', name: 'app_account_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AccountRepository $accountRepository): Response
