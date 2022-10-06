@@ -75,4 +75,5 @@ class AccountController extends AbstractController
 
         return $this->redirectToRoute('app_account_index', [], Response::HTTP_SEE_OTHER);
     }
+    
 }
