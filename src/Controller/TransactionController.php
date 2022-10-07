@@ -28,15 +28,14 @@ class TransactionController extends AbstractController
         $transaction = new Transaction();
         $form = $this->createForm(TransactionType::class,$transaction);
         $form->handleRequest($request);
-
+        $receiver = $form['id_receiver']->getData();
+        $sender = $form['id_sender']->getData();
+        $mount = $form['amount']->getData();
         if ($form->isSubmitted() && $form->isValid()) {
-            $account = new Account();
-            
             $transaction->setDate(new \DateTime('now'));
             $transaction->setTransactionState(false);
-            $transaction->setIdSender($account);
-            $transaction->setIdReceiver($account);
-
+            $receiver->setBalance((float)$receiver->getBalance()+(float)$mount);
+            $sender->setBalance((float)$sender->getBalance()-(float)$mount);
             $transactionRepository->save($transaction, true);
 
             return $this->redirectToRoute('app_transaction_index', [], Response::HTTP_SEE_OTHER);
