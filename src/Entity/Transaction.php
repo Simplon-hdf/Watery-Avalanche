@@ -8,10 +8,17 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\PostCollection;
 use App\Controller\TransactionController;
 
 #[ORM\Entity(repositoryClass: TransactionRepository::class)]
-#[ApiResource]
+#[ApiResource(operations : [
+    new Post(
+        uriTemplate: '/transaction/new'
+    ),
+    new GetCollection()
+])]
 class Transaction
 {
     #[ORM\Id]
